@@ -10,9 +10,15 @@ import UIKit
 
 class YoutubeNetwork {
     
+    let cache = NSCache<AnyObject, AnyObject>()
+    
     func perform(url: URL, success: @escaping (Data)->() , failure: @escaping (Error) -> ()) {
         
-        let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+        if let data = cache.object(forKey: url.absoluteString as AnyObject) as? Data {
+            success(data)
+        }
+        
+        let task = URLSession.shared.dataTask(with: url, completionHandler: { [weak self] (data, response, error) in
             guard error == nil else {
                 failure(YoutubeNetworkErrors.networkConnectionIssue)
                 return
@@ -30,6 +36,7 @@ class YoutubeNetwork {
                 return
             }
             
+            self?.cache.setObject(data as AnyObject, forKey: url.absoluteString as AnyObject)
             success(data)
         })
         task.resume()

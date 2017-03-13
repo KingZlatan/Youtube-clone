@@ -13,8 +13,10 @@ class HomeBaseViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var mb: MenuBar!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var videoList: [Video]?
-        
+    private var blackView: BlackView = BlackView()
+    
+    private var videoList: [Video]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -76,10 +78,9 @@ class HomeBaseViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     @objc private func handleMore() {
-        
+        blackView.handleMore()
     }
 
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let count = videoList?.count {
             return count
