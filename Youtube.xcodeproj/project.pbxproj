@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2A6D0DC81E772F6200B02C59 /* BlackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6D0DC71E772F6200B02C59 /* BlackView.swift */; };
+		2A6D0DCA1E773B5800B02C59 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6D0DC91E773B5800B02C59 /* SettingCell.swift */; };
 		2A8E73981E76ECA70098D07F /* YoutubeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8E73971E76ECA70098D07F /* YoutubeNetwork.swift */; };
 		2A8E739A1E76ED3D0098D07F /* YoutubeNetworkErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8E73991E76ED3D0098D07F /* YoutubeNetworkErrors.swift */; };
 		2AB1AA861E75BC5D000E4176 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB1AA851E75BC5D000E4176 /* AppDelegate.swift */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		2A6D0DC71E772F6200B02C59 /* BlackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlackView.swift; sourceTree = "<group>"; };
+		2A6D0DC91E773B5800B02C59 /* SettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		2A8E73971E76ECA70098D07F /* YoutubeNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeNetwork.swift; sourceTree = "<group>"; };
 		2A8E73991E76ED3D0098D07F /* YoutubeNetworkErrors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeNetworkErrors.swift; sourceTree = "<group>"; };
 		2AB1AA821E75BC5D000E4176 /* Youtube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Youtube.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,6 +110,7 @@
 				2AB1AAA31E761EAD000E4176 /* BaseCell.swift */,
 				2AB1AA971E75C4DF000E4176 /* VideoCell.swift */,
 				2AB1AAA01E761175000E4176 /* MenuCell.swift */,
+				2A6D0DC91E773B5800B02C59 /* SettingCell.swift */,
 			);
 			name = "Collection Cells";
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 			files = (
 				2AB1AA861E75BC5D000E4176 /* AppDelegate.swift in Sources */,
 				2AB1AA981E75C4DF000E4176 /* VideoCell.swift in Sources */,
+				2A6D0DCA1E773B5800B02C59 /* SettingCell.swift in Sources */,
 				2AB1AAA11E761175000E4176 /* MenuCell.swift in Sources */,
 				2A6D0DC81E772F6200B02C59 /* BlackView.swift in Sources */,
 				2A8E739A1E76ED3D0098D07F /* YoutubeNetworkErrors.swift in Sources */,
