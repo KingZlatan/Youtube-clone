@@ -14,9 +14,7 @@ class HomeBaseViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var collectionView: UICollectionView!
     
     var videoList: [Video]?
-    
-//    @IBOutlet weak var menuBarView: UIView!
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -31,7 +29,6 @@ class HomeBaseViewController: UIViewController, UICollectionViewDataSource, UICo
         collectionView?.backgroundColor = UIColor.white
         
         readContentsOfFile()
-        
         
         setupMenuBar()
         setUpNavBarItems()
@@ -92,9 +89,12 @@ class HomeBaseViewController: UIViewController, UICollectionViewDataSource, UICo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath) as! VideoCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifiers.cell, for: indexPath) as! VideoCell
         if let video = videoList {
             cell.video = video[indexPath.item]
+            cell.profileImageView.layer.cornerRadius = cell.profileImageView.frame.width/2
+            cell.profileImageView.contentMode = .scaleAspectFill
+            cell.profileImageView.clipsToBounds = true
         }
         return cell
     }
@@ -114,6 +114,8 @@ class HomeBaseViewController: UIViewController, UICollectionViewDataSource, UICo
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
+}
 
-
+struct reuseIdentifiers {
+    static let cell = "cellID"
 }

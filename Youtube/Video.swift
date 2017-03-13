@@ -27,6 +27,7 @@ class Video: NSObject {
         case numberofViews = "number_of_views"
         case thumbnailImage = "thumbnail_image_name"
         case title = "title"
+        case channel = "channel"
     }
     
     init(json: [String: Any]) {
@@ -42,6 +43,9 @@ class Video: NSObject {
         if let title = json[Video.VideoConfig.title.rawValue] as? String {
             self.albumTitle = title
         }
+        if let channel = json[Video.VideoConfig.channel.rawValue] as? [String: Any] {
+            self.channel = Channel(data: channel)
+        }
     }
 }
 
@@ -50,6 +54,20 @@ class Channel: NSObject {
 
     var name: String!
     var profileImage: String!
+    
+    enum ChannelConfig: String {
+        case name = "name"
+        case profileImage = "profile_image_name"
+    }
+    
+    init(data: [String: Any]) {
+        if let name = data[Channel.ChannelConfig.name.rawValue] as? String {
+            self.name = name
+        }
+        if let profImg = data[Channel.ChannelConfig.profileImage.rawValue] as? String {
+            self.profileImage = profImg
+        }
+    }
     
     override init() {
         

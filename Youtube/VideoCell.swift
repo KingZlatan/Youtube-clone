@@ -13,10 +13,18 @@ class VideoCell: UICollectionViewCell {
     var video: Video? {
         didSet {
             
-            setUpThumbnailImage()
-//            profileImageView.image = UIImage(named: (video?.profileImage)!)
-//            mainTextLabel.text = video?.albumTitle
-//            subtitleTextLabel.text = video?.albumSubTitle
+            setupImages()
+            mainTextLabel.text = video?.albumTitle
+            
+            if let views = video?.views {
+                if let duration = video?.duration {
+                    if let channelname = video?.channel.name {
+                        let fm = NumberFormatter()
+                        fm.numberStyle = .decimal
+                        subtitleTextLabel.text = "\(channelname), \(fm.string(from: NSNumber(value: views))!) views, uploaded \(duration) days ago"
+                    }
+                }
+            }
         }
     }
     
@@ -28,18 +36,26 @@ class VideoCell: UICollectionViewCell {
     
     @IBOutlet weak var subtitleTextLabel: UILabel!
     
-    private func setUpThumbnailImage() {
+    var networkRequest: YoutubeNetwork = YoutubeNetwork()
         
+    private func setupImages() {
         let url = URL(string: (video?.albumCoverImage)!)!
-        
-        let task = URLSession.shared.dataTask(with: url, completionHandler: { [weak self] (data, response, error) in
-            if let data = data {
-                DispatchQueue.main.async {
-                    self?.imageView.image = UIImage(data: data)
-                }
+        networkRequest.perform(url: url, success: { [weak self] (data) in
+            DispatchQueue.main.async {
+                self?.imageView.image = UIImage(data: data)
             }
-        })
-        task.resume()
+        }) { (error) in
+            
+        }
+        
+        let url1 = URL(string: (video?.channel.profileImage)!)!
+        networkRequest.perform(url: url1, success: { [weak self] (data) in
+            DispatchQueue.main.async {
+                self?.profileImageView.image = UIImage(data: data)
+            }
+        }) { (error) in
+            
+        }
+
     }
-    
 }
