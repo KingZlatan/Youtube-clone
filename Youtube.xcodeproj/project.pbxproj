@@ -23,6 +23,7 @@
 		2AB1AAA41E761EAD000E4176 /* BaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB1AAA31E761EAD000E4176 /* BaseCell.swift */; };
 		2AB1AAA71E7621DD000E4176 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB1AAA61E7621DD000E4176 /* Video.swift */; };
 		2AB1AAAB1E76312A000E4176 /* home.json in Resources */ = {isa = PBXBuildFile; fileRef = 2AB1AAAA1E76312A000E4176 /* home.json */; };
+		2AB1AAAD1E778CF1000E4176 /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB1AAAC1E778CF1000E4176 /* SettingModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		2AB1AAA31E761EAD000E4176 /* BaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseCell.swift; sourceTree = "<group>"; };
 		2AB1AAA61E7621DD000E4176 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		2AB1AAAA1E76312A000E4176 /* home.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = home.json; sourceTree = "<group>"; };
+		2AB1AAAC1E778CF1000E4176 /* SettingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				2AB1AAA61E7621DD000E4176 /* Video.swift */,
+				2AB1AAAC1E778CF1000E4176 /* SettingModel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -226,6 +229,7 @@
 				2A6D0DC81E772F6200B02C59 /* BlackView.swift in Sources */,
 				2A8E739A1E76ED3D0098D07F /* YoutubeNetworkErrors.swift in Sources */,
 				2A8E73981E76ECA70098D07F /* YoutubeNetwork.swift in Sources */,
+				2AB1AAAD1E778CF1000E4176 /* SettingModel.swift in Sources */,
 				2AB1AA9B1E75D74B000E4176 /* Extension.swift in Sources */,
 				2AB1AAA41E761EAD000E4176 /* BaseCell.swift in Sources */,
 				2AB1AAA71E7621DD000E4176 /* Video.swift in Sources */,

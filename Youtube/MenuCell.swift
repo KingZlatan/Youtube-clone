@@ -8,20 +8,15 @@
 
 import UIKit
 
-class MenuCell: UICollectionViewCell {
-    override init(frame: CGRect) {
-        
-        super.init(frame: frame)
-        
+class MenuCell: BaseCell {
+
+    override func setUpViews() {
+        super.setUpViews()
         imageView.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height)
         addConstraint(NSLayoutConstraint(item: imageView, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1, constant: 0))
         addConstraint(NSLayoutConstraint(item: imageView, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
-        
         addSubview(imageView)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+
     }
     
     override var isHighlighted: Bool {
@@ -45,6 +40,5 @@ class MenuCell: UICollectionViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    
     
 }
