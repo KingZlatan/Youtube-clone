@@ -78,7 +78,7 @@ class BlackView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, U
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellIDD", for: indexPath) as? SettingCell {
             cell.nameLabel.text = cell.model.nameSet[indexPath.item]
-            cell.image.image = UIImage(named: cell.model.imageSet[indexPath.item])
+//            cell.image.image = UIImage(named: cell.model.imageSet[indexPath.item])
             return cell
         }
         return UICollectionViewCell()
