@@ -19,15 +19,39 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
         return cv
     }()
     
+    weak var homeController: HomeBaseViewController?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUpCollectionView()
+        setUpHMenuBar()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setUpCollectionView()
+        setUpHMenuBar()
+    }
+    
+    var menuHBar: UIView = {
+        let hBar = UIView()
+        hBar.backgroundColor = UIColor(white: 1, alpha: 1)
+        hBar.translatesAutoresizingMaskIntoConstraints = false
+        return hBar
+    }()
+    
+    var leftConstraint: NSLayoutConstraint?
+    
+    private func setUpHMenuBar() {
+        
+        addSubview(menuHBar)
+        leftConstraint = menuHBar.leftAnchor.constraint(equalTo: self.leftAnchor)
+        leftConstraint!.isActive = true
+        menuHBar.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.25).isActive = true
+        menuHBar.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        menuHBar.heightAnchor.constraint(equalToConstant: 4).isActive = true
 
+        
     }
     
     private func setUpCollectionView() {
@@ -65,6 +89,17 @@ class MenuBar: UIView, UICollectionViewDataSource, UICollectionViewDelegate, UIC
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        homeController?.scrolltoPosition(menuItem: indexPath.item)
+        let xPos = CGFloat(indexPath.item)*frame.width/4
+        leftConstraint?.constant = xPos
+        
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+            self?.layoutIfNeeded()
+        })
     }
 }
 

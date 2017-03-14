@@ -29,10 +29,10 @@
                                     <constraint firstAttribute="height" constant="56" id="33A-OY-8Fj"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gJW-pP-y6c">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gJW-pP-y6c">
                                 <rect key="frame" x="0.0" y="128" width="375" height="539"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CiY-Ol-Kig">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CiY-Ol-Kig">
                                     <size key="itemSize" width="345" height="245"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -40,7 +40,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellID" id="X8l-gU-Sra" customClass="VideoCell" customModule="Youtube" customModuleProvider="target">
-                                        <rect key="frame" x="15" y="0.0" width="345" height="245"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="345" height="245"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="345" height="245"/>
@@ -94,6 +94,14 @@
                                             <outlet property="profileImageView" destination="T1h-eV-Ohf" id="WvY-i2-7qQ"/>
                                             <outlet property="subtitleTextLabel" destination="elu-3K-ph0" id="05S-X3-RDK"/>
                                         </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="ZR8-9C-vpt">
+                                        <rect key="frame" x="0.0" y="294" width="345" height="245"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="345" height="245"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
