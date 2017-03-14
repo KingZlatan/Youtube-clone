@@ -34,12 +34,13 @@ class SettingCell: BaseCell {
         didSet {
             backgroundColor = isHighlighted ? UIColor.gray : UIColor.white
             image.tintColor = isHighlighted ? UIColor.white : UIColor.black
-            nameLabel.tintColor = isHighlighted ? UIColor.white : UIColor.black
+            nameLabel.textColor = isHighlighted ? UIColor.white : UIColor.black
         }
     }
     
     override var isSelected: Bool {
         didSet {
+            performAction()
 //            let alert = UIAlertController(title: "Alert!", message: "Selected \((nameLabel.text)!)", preferredStyle: .alert)
 //            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
 
@@ -59,9 +60,13 @@ class SettingCell: BaseCell {
         addSubview(image)
         addConstraint(NSLayoutConstraint(item: image, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1, constant: 0))
         addConstraint(NSLayoutConstraint(item: image, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0))
-        addConstraint(NSLayoutConstraint(item: image, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 10))
+        addConstraint(NSLayoutConstraint(item: image, attribute: .leading, relatedBy: .equal, toItem: self, attribute: .leading, multiplier: 1, constant: 20))
         addConstraint(NSLayoutConstraint(item: image, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1, constant: 0))
 
 //        image.frame = CGRect(x: 0, y: 0, width: self.frame.height, height: self.frame.height)
+    }
+    
+    private func performAction() {
+        
     }
 }

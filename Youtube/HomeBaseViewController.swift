@@ -13,7 +13,11 @@ class HomeBaseViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var mb: MenuBar!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    private var blackView: BlackView = BlackView()
+    lazy private var blackView: BlackView = {
+        let view = BlackView()
+        view.homeBaseVC = self
+        return view
+    }()
     
     private var videoList: [Video]?
     
@@ -22,6 +26,7 @@ class HomeBaseViewController: UIViewController, UICollectionViewDataSource, UICo
 
         navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 230, green: 32, blue: 31)
         navigationController?.navigationBar.isTranslucent = false
+        navigationController?.navigationItem.title = "HOME"
         
         let titlelabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width-32, height: view.frame.height))
         titlelabel.text = "Home"
@@ -114,6 +119,14 @@ class HomeBaseViewController: UIViewController, UICollectionViewDataSource, UICo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    //Helper methods
+    
+    func presentVC(text: String) {
+        let newVC = SettingsViewController()
+        newVC.title = text
+        self.navigationController?.pushViewController(newVC, animated: true)
     }
 }
 

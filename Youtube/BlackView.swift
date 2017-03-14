@@ -31,6 +31,10 @@ class BlackView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, U
         return cv
     }()
     
+    weak var homeBaseVC: HomeBaseViewController?
+    
+    var setting: SettingModel = SettingModel()
+    
     @objc func handleMore() {
         
         if let window = UIApplication.shared.keyWindow {
@@ -55,17 +59,7 @@ class BlackView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, U
         }
     }
     
-    
-    @objc private func handleDismiss() {
-        
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: { [weak self] in
-            self?.alpha = 0
-            self?.collectionView.frame = CGRect(x: 0, y: (self?.height)!*3, width: (self?.width)!, height: (self?.height)!)
-            
-            }, completion: { [weak self] (_) in
-                self?.collectionView.removeFromSuperview()
-        })
-    }
+    // MARK: CollectionView Delegate and DataSource
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -78,7 +72,6 @@ class BlackView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, U
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellIDD", for: indexPath) as? SettingCell {
             cell.nameLabel.text = cell.model.nameSet[indexPath.item]
-//            cell.image.image = UIImage(named: cell.model.imageSet[indexPath.item])
             return cell
         }
         return UICollectionViewCell()
@@ -94,5 +87,37 @@ class BlackView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, U
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let str = setting.nameSet[indexPath.item]
+        handle(str: str)
 
+    }
+
+    // MARK: Private helpers
+    
+    @objc private func handleDismiss() {
+        handle()
+    }
+    
+    private func handle(str: String? = nil) {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: { [weak self] in
+            self?.alpha = 0
+            self?.collectionView.frame = CGRect(x: 0, y: (self?.height)!*3, width: (self?.width)!, height: (self?.height)!)
+            
+            }, completion: { [weak self] (_) in
+                self?.collectionView.removeFromSuperview()
+                guard let setting = str else {
+                    return
+                }
+                self?.homeBaseVC?.presentVC(text: setting)
+        })
+        
+    }
+}
+
+extension BlackView {
+    enum BlackViewConfig: String {
+        case dismiss = "dismiss"
+    }
 }
