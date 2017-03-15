@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A5AB63E1E79C88600889DF3 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5AB63D1E79C88600889DF3 /* FeedCell.swift */; };
+		2A5AB6431E79CDF700889DF3 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5AB6421E79CDF700889DF3 /* HomeCell.swift */; };
+		2A5AB6451E79DEA000889DF3 /* SubscriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5AB6441E79DEA000889DF3 /* SubscriptionCell.swift */; };
+		2A5AB6471E79E12200889DF3 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A5AB6461E79E12200889DF3 /* CustomCell.xib */; };
 		2A6D0DC81E772F6200B02C59 /* BlackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6D0DC71E772F6200B02C59 /* BlackView.swift */; };
 		2A6D0DCA1E773B5800B02C59 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6D0DC91E773B5800B02C59 /* SettingCell.swift */; };
 		2A8E73981E76ECA70098D07F /* YoutubeNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8E73971E76ECA70098D07F /* YoutubeNetwork.swift */; };
@@ -28,6 +32,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A5AB63D1E79C88600889DF3 /* FeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
+		2A5AB6421E79CDF700889DF3 /* HomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
+		2A5AB6441E79DEA000889DF3 /* SubscriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionCell.swift; sourceTree = "<group>"; };
+		2A5AB6461E79E12200889DF3 /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		2A6D0DC71E772F6200B02C59 /* BlackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlackView.swift; sourceTree = "<group>"; };
 		2A6D0DC91E773B5800B02C59 /* SettingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		2A8E73971E76ECA70098D07F /* YoutubeNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeNetwork.swift; sourceTree = "<group>"; };
@@ -61,6 +69,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A5AB63F1E79CCF400889DF3 /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+				2A5AB6461E79E12200889DF3 /* CustomCell.xib */,
+			);
+			name = Xibs;
+			sourceTree = "<group>";
+		};
 		2A8E73961E76EC990098D07F /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +110,7 @@
 				2AB1AAA21E761E73000E4176 /* Collection Cells */,
 				2AB1AAA51E761F64000E4176 /* Controllers */,
 				2AB1AAA81E7621EC000E4176 /* Model */,
+				2A5AB63F1E79CCF400889DF3 /* Xibs */,
 				2AB1AAA91E7621FD000E4176 /* Supporting Files */,
 			);
 			path = Youtube;
@@ -112,9 +129,12 @@
 			isa = PBXGroup;
 			children = (
 				2AB1AAA31E761EAD000E4176 /* BaseCell.swift */,
+				2A5AB63D1E79C88600889DF3 /* FeedCell.swift */,
+				2A5AB6441E79DEA000889DF3 /* SubscriptionCell.swift */,
 				2AB1AA971E75C4DF000E4176 /* VideoCell.swift */,
 				2AB1AAA01E761175000E4176 /* MenuCell.swift */,
 				2A6D0DC91E773B5800B02C59 /* SettingCell.swift */,
+				2A5AB6421E79CDF700889DF3 /* HomeCell.swift */,
 			);
 			name = "Collection Cells";
 			sourceTree = "<group>";
@@ -211,6 +231,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A5AB6471E79E12200889DF3 /* CustomCell.xib in Resources */,
 				2AB1AA901E75BC5D000E4176 /* LaunchScreen.storyboard in Resources */,
 				2AB1AA8D1E75BC5D000E4176 /* Assets.xcassets in Resources */,
 				2AB1AAAB1E76312A000E4176 /* home.json in Resources */,
@@ -227,6 +248,7 @@
 			files = (
 				2AB1AA861E75BC5D000E4176 /* AppDelegate.swift in Sources */,
 				2AB1AA981E75C4DF000E4176 /* VideoCell.swift in Sources */,
+				2A5AB6431E79CDF700889DF3 /* HomeCell.swift in Sources */,
 				2A6D0DCA1E773B5800B02C59 /* SettingCell.swift in Sources */,
 				2AB1AAA11E761175000E4176 /* MenuCell.swift in Sources */,
 				2A6D0DC81E772F6200B02C59 /* BlackView.swift in Sources */,
@@ -236,6 +258,8 @@
 				2AB1AA9B1E75D74B000E4176 /* Extension.swift in Sources */,
 				2AB1AAAF1E7831E1000E4176 /* SettingsViewController.swift in Sources */,
 				2AB1AAA41E761EAD000E4176 /* BaseCell.swift in Sources */,
+				2A5AB63E1E79C88600889DF3 /* FeedCell.swift in Sources */,
+				2A5AB6451E79DEA000889DF3 /* SubscriptionCell.swift in Sources */,
 				2AB1AAA71E7621DD000E4176 /* Video.swift in Sources */,
 				2AB1AA9F1E75F67B000E4176 /* HomeBaseViewController.swift in Sources */,
 				2AB1AA9D1E75ECB7000E4176 /* MenuBar.swift in Sources */,

@@ -37,6 +37,10 @@ class VideoCell: UICollectionViewCell {
     @IBOutlet weak var subtitleTextLabel: UILabel!
     
     var networkRequest: YoutubeNetwork = YoutubeNetwork()
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
         
     private func setupImages() {
         let url = URL(string: (video?.albumCoverImage)!)!

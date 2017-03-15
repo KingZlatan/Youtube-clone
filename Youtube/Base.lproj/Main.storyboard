@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1217" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nsS-n3-YEo">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nsS-n3-YEo">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -88,20 +88,24 @@
                                             <constraint firstAttribute="trailingMargin" secondItem="4rQ-yb-obI" secondAttribute="trailing" id="hTN-We-jlQ"/>
                                             <constraint firstAttribute="topMargin" secondItem="4rQ-yb-obI" secondAttribute="top" id="nYZ-cE-UFo"/>
                                         </constraints>
-                                        <connections>
-                                            <outlet property="imageView" destination="4rQ-yb-obI" id="gpL-uj-y3l"/>
-                                            <outlet property="mainTextLabel" destination="Y97-DH-SDp" id="5bS-l9-cTD"/>
-                                            <outlet property="profileImageView" destination="T1h-eV-Ohf" id="WvY-i2-7qQ"/>
-                                            <outlet property="subtitleTextLabel" destination="elu-3K-ph0" id="05S-X3-RDK"/>
-                                        </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="ZR8-9C-vpt">
-                                        <rect key="frame" x="0.0" y="294" width="345" height="245"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="ZR8-9C-vpt" customClass="FeedCell" customModule="Youtube" customModuleProvider="target">
+                                        <rect key="frame" x="146" y="255" width="54" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="345" height="245"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="54" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </view>
+                                        <size key="customSize" width="54" height="50"/>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell1" id="gOL-uv-rCC" customClass="SubscriptionCell" customModule="Youtube" customModuleProvider="target">
+                                        <rect key="frame" x="151" y="315" width="50" height="49"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="49"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                        <size key="customSize" width="50" height="49"/>
                                     </collectionViewCell>
                                 </cells>
                                 <connections>

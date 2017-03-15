@@ -19,7 +19,11 @@ class HomeBaseViewController: UIViewController, UICollectionViewDataSource, UICo
         return view
     }()
     
-    private var videoList: [Video]?
+    private var videoList: [Video]? {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,7 +91,7 @@ class HomeBaseViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     @objc private func handleSearch() {
-        scrolltoPosition(menuItem: 2)
+
     }
     
     @objc private func handleMore() {
@@ -99,10 +103,24 @@ class HomeBaseViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as UICollectionViewCell
-        var colors : [UIColor] = [ .black , .blue, .red , .green]
-        cell.backgroundColor = colors[indexPath.item]
-        return cell
+        if indexPath.item == 0 {
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? FeedCell {
+                //            var colors : [UIColor] = [ .black , .blue, .red , .green]
+                //            cell.backgroundColor = colors[indexPath.item]
+                cell.videoList = videoList
+                return cell
+            }
+        } else {
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell1", for: indexPath) as? SubscriptionCell {
+
+                cell.backgroundColor = UIColor.white
+                
+                return cell
+            }
+
+        }
+        
+        return UICollectionViewCell()
     
     }
     
@@ -115,18 +133,24 @@ class HomeBaseViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
         mb.leftConstraint?.constant = scrollView.contentOffset.x/4
         UIView.animate(withDuration: 0.3, animations: { [weak self] in
             self?.mb.layoutIfNeeded()
         })
     }
     
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let xPos = targetContentOffset.pointee.x/collectionView.frame.width
+        let idx = IndexPath(item: Int(xPos), section: 0)
+        
+        mb.collectionView.selectItem(at: idx, animated: true, scrollPosition: [])
+    }
+    
     func scrolltoPosition(menuItem: Int) {
         let idx = IndexPath(item: menuItem, section: 0)
         collectionView.scrollToItem(at: idx, at: [], animated: true)
     }
-    
-    
 //
 //    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 //        if let count = videoList?.count {
