@@ -131,10 +131,9 @@
 		2AB1AAA21E761E73000E4176 /* Collection Cells */ = {
 			isa = PBXGroup;
 			children = (
-				2AB1AAD71E7A0D10000E4176 /* Main Cells */,
 				2AB1AAA31E761EAD000E4176 /* BaseCell.swift */,
-				2AB1AA971E75C4DF000E4176 /* VideoCell.swift */,
-				2AB1AADA1E7A2503000E4176 /* TrendingCollectionViewCell.swift */,
+				2AB1AAD71E7A0D10000E4176 /* Main Cells Controllers */,
+				2AB1AADC1E7A2DCF000E4176 /* Main Cells */,
 				2AB1AAA01E761175000E4176 /* MenuCell.swift */,
 				2A6D0DC91E773B5800B02C59 /* SettingCell.swift */,
 			);
@@ -173,11 +172,20 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		2AB1AAD71E7A0D10000E4176 /* Main Cells */ = {
+		2AB1AAD71E7A0D10000E4176 /* Main Cells Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				2A5AB63D1E79C88600889DF3 /* FeedCell.swift */,
 				2A5AB6441E79DEA000889DF3 /* TrendingCell.swift */,
+			);
+			name = "Main Cells Controllers";
+			sourceTree = "<group>";
+		};
+		2AB1AADC1E7A2DCF000E4176 /* Main Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2AB1AA971E75C4DF000E4176 /* VideoCell.swift */,
+				2AB1AADA1E7A2503000E4176 /* TrendingCollectionViewCell.swift */,
 			);
 			name = "Main Cells";
 			sourceTree = "<group>";
