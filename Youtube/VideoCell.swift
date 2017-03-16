@@ -41,6 +41,14 @@ class VideoCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
         
     private func setupImages() {
         let url = URL(string: (video?.albumCoverImage)!)!

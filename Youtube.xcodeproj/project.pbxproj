@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2A5AB63E1E79C88600889DF3 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5AB63D1E79C88600889DF3 /* FeedCell.swift */; };
-		2A5AB6431E79CDF700889DF3 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5AB6421E79CDF700889DF3 /* HomeCell.swift */; };
 		2A5AB6451E79DEA000889DF3 /* SubscriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A5AB6441E79DEA000889DF3 /* SubscriptionCell.swift */; };
 		2A5AB6471E79E12200889DF3 /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A5AB6461E79E12200889DF3 /* CustomCell.xib */; };
 		2A6D0DC81E772F6200B02C59 /* BlackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6D0DC71E772F6200B02C59 /* BlackView.swift */; };
@@ -33,7 +32,6 @@
 
 /* Begin PBXFileReference section */
 		2A5AB63D1E79C88600889DF3 /* FeedCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
-		2A5AB6421E79CDF700889DF3 /* HomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		2A5AB6441E79DEA000889DF3 /* SubscriptionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionCell.swift; sourceTree = "<group>"; };
 		2A5AB6461E79E12200889DF3 /* CustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
 		2A6D0DC71E772F6200B02C59 /* BlackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlackView.swift; sourceTree = "<group>"; };
@@ -128,13 +126,11 @@
 		2AB1AAA21E761E73000E4176 /* Collection Cells */ = {
 			isa = PBXGroup;
 			children = (
+				2AB1AAD71E7A0D10000E4176 /* Main Cells */,
 				2AB1AAA31E761EAD000E4176 /* BaseCell.swift */,
-				2A5AB63D1E79C88600889DF3 /* FeedCell.swift */,
-				2A5AB6441E79DEA000889DF3 /* SubscriptionCell.swift */,
 				2AB1AA971E75C4DF000E4176 /* VideoCell.swift */,
 				2AB1AAA01E761175000E4176 /* MenuCell.swift */,
 				2A6D0DC91E773B5800B02C59 /* SettingCell.swift */,
-				2A5AB6421E79CDF700889DF3 /* HomeCell.swift */,
 			);
 			name = "Collection Cells";
 			sourceTree = "<group>";
@@ -169,6 +165,15 @@
 				2AB1AA911E75BC5D000E4176 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2AB1AAD71E7A0D10000E4176 /* Main Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2A5AB63D1E79C88600889DF3 /* FeedCell.swift */,
+				2A5AB6441E79DEA000889DF3 /* SubscriptionCell.swift */,
+			);
+			name = "Main Cells";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,7 +253,6 @@
 			files = (
 				2AB1AA861E75BC5D000E4176 /* AppDelegate.swift in Sources */,
 				2AB1AA981E75C4DF000E4176 /* VideoCell.swift in Sources */,
-				2A5AB6431E79CDF700889DF3 /* HomeCell.swift in Sources */,
 				2A6D0DCA1E773B5800B02C59 /* SettingCell.swift in Sources */,
 				2AB1AAA11E761175000E4176 /* MenuCell.swift in Sources */,
 				2A6D0DC81E772F6200B02C59 /* BlackView.swift in Sources */,

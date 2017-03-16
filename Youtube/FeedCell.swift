@@ -15,6 +15,7 @@ class FeedCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, 
         let layout = UICollectionViewFlowLayout()
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false
+        cv.backgroundColor = .white
         cv.dataSource = self
         cv.delegate = self
         return cv
@@ -26,11 +27,21 @@ class FeedCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, 
         }
     }
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        collectionView.register(UINib(nibName: "CustomCell", bundle: nil), forCellWithReuseIdentifier: "cellID")
+
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        collectionView.register(UINib(nibName: "CustomCell", bundle: nil), forCellWithReuseIdentifier: "cellID")
+    }
+    
     override func setUpViews() {
         super.setUpViews()
         backgroundColor = UIColor.lightGray
         
-        collectionView.register(UINib(nibName: "CustomCell", bundle: nil), forCellWithReuseIdentifier: "cellID")
         
         addSubview(collectionView)
         addConstraint(NSLayoutConstraint(item: collectionView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0))
@@ -47,6 +58,9 @@ class FeedCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if let count = videoList?.count {
+            return count
+        }
         return 3
     }
     
@@ -55,13 +69,13 @@ class FeedCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, 
                                                          for: indexPath) as? VideoCell
         {
             if let video = videoList {
-//                cell.video = video[indexPath.item]
-//                cell.profileImageView.layer.cornerRadius = cell.profileImageView.frame.width/2
-//                cell.profileImageView.contentMode = .scaleAspectFill
-//                cell.profileImageView.clipsToBounds = true
-                cell.mainTextLabel.text = "One"
+                cell.video = video[indexPath.item]
+                cell.profileImageView.layer.cornerRadius = cell.profileImageView.frame.width/2
+                cell.profileImageView.contentMode = .scaleAspectFill
+                cell.profileImageView.clipsToBounds = true
+//                cell.mainTextLabel.text = "One"
             }
-            cell.backgroundColor = UIColor.blue
+//            cell.backgroundColor = UIColor.blue
             return cell
             
         }
