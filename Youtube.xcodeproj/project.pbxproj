@@ -30,6 +30,7 @@
 		2AB1AAAF1E7831E1000E4176 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB1AAAE1E7831E1000E4176 /* SettingsViewController.swift */; };
 		2AB1AAD91E7A220C000E4176 /* TrendingCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AB1AAD81E7A220C000E4176 /* TrendingCollectionViewCell.xib */; };
 		2AB1AADB1E7A2503000E4176 /* TrendingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB1AADA1E7A2503000E4176 /* TrendingCollectionViewCell.swift */; };
+		2AB1AADE1E7A31FA000E4176 /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB1AADD1E7A31FA000E4176 /* Channel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		2AB1AAAE1E7831E1000E4176 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		2AB1AAD81E7A220C000E4176 /* TrendingCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TrendingCollectionViewCell.xib; sourceTree = "<group>"; };
 		2AB1AADA1E7A2503000E4176 /* TrendingCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrendingCollectionViewCell.swift; sourceTree = "<group>"; };
+		2AB1AADD1E7A31FA000E4176 /* Channel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 			children = (
 				2AB1AAA61E7621DD000E4176 /* Video.swift */,
 				2AB1AAAC1E778CF1000E4176 /* SettingModel.swift */,
+				2AB1AADD1E7A31FA000E4176 /* Channel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				2A6D0DC81E772F6200B02C59 /* BlackView.swift in Sources */,
 				2A8E739A1E76ED3D0098D07F /* YoutubeNetworkErrors.swift in Sources */,
 				2A8E73981E76ECA70098D07F /* YoutubeNetwork.swift in Sources */,
+				2AB1AADE1E7A31FA000E4176 /* Channel.swift in Sources */,
 				2AB1AAAD1E778CF1000E4176 /* SettingModel.swift in Sources */,
 				2AB1AA9B1E75D74B000E4176 /* Extension.swift in Sources */,
 				2AB1AAAF1E7831E1000E4176 /* SettingsViewController.swift in Sources */,
