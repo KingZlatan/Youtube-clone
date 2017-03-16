@@ -13,17 +13,15 @@ class HomeBaseViewController: UIViewController, UICollectionViewDataSource, UICo
     @IBOutlet weak var mb: MenuBar!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var titlelabel: UILabel!
+    
+    let titles: [String] = ["  Home", "  Trending", "  Account", "  Subscription"]
+    
     lazy private var blackView: BlackView = {
         let view = BlackView()
         view.homeBaseVC = self
         return view
     }()
-    
-    private var videoList: [Video]? {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,14 +29,12 @@ class HomeBaseViewController: UIViewController, UICollectionViewDataSource, UICo
         navigationController?.navigationBar.barTintColor = UIColor.rgb(red: 230, green: 32, blue: 31)
         navigationController?.navigationBar.isTranslucent = false
         
-        let titlelabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width-32, height: view.frame.height))
+        titlelabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.frame.width-32, height: view.frame.height))
         titlelabel.text = "  Home"
         titlelabel.textColor = UIColor.white
         titlelabel.font = UIFont.systemFont(ofSize: 20)
         navigationItem.titleView = titlelabel
         collectionView?.backgroundColor = UIColor.white
-        
-        readContentsOfFile()
         
         setupMenuBar()
         setUpNavBarItems()
@@ -52,26 +48,6 @@ class HomeBaseViewController: UIViewController, UICollectionViewDataSource, UICo
             flow.sectionInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 5)
         }
         collectionView.isPagingEnabled = true
-    }
-    
-    private func readContentsOfFile() {
-        let file = Bundle.main.path(forResource: "home", ofType: "json")
-        
-        do {
-            let jsonData = try Data(contentsOf: URL(fileURLWithPath: file!), options: .alwaysMapped)
-            let data = try JSONSerialization.jsonObject(with: jsonData, options: .mutableLeaves)
-            if let json = data as? [[String: Any]] {
-                
-                var videos = [Video]()
-                for obj in json {
-                    let parsed = Video(json: obj)
-                    videos.append(parsed)
-                }
-                videoList = videos
-            }
-        } catch {
-            print(error)
-        }
     }
     
     private func setupMenuBar() {
@@ -103,29 +79,24 @@ class HomeBaseViewController: UIViewController, UICollectionViewDataSource, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if indexPath.item == 0 {
+        if indexPath.item == ItemsConfig.Home.rawValue {
             if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? FeedCell {
-                //            var colors : [UIColor] = [ .black , .blue, .red , .green]
-                //            cell.backgroundColor = colors[indexPath.item]
-                cell.videoList = videoList
                 return cell
             }
-        } else {
-            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell1", for: indexPath) as? SubscriptionCell {
-
+        }
+        if indexPath.item == ItemsConfig.Trending.rawValue || indexPath.item == ItemsConfig.Account.rawValue || indexPath.item == ItemsConfig.Subscription.rawValue {
+            if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell2", for: indexPath) as? TrendingCell {
+                
                 cell.backgroundColor = UIColor.white
                 
                 return cell
             }
-
         }
-        
         return UICollectionViewCell()
-    
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return ItemsConfig.itemsCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -142,58 +113,41 @@ class HomeBaseViewController: UIViewController, UICollectionViewDataSource, UICo
     
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
         let xPos = targetContentOffset.pointee.x/collectionView.frame.width
+        setTitleLabel(item: Int(xPos))
         let idx = IndexPath(item: Int(xPos), section: 0)
         
         mb.collectionView.selectItem(at: idx, animated: true, scrollPosition: [])
     }
     
     func scrolltoPosition(menuItem: Int) {
+        setTitleLabel(item: menuItem)
         let idx = IndexPath(item: menuItem, section: 0)
         collectionView.scrollToItem(at: idx, at: [], animated: true)
     }
-//
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        if let count = videoList?.count {
-//            return count
-//        }
-//        return 0
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifiers.cell, for: indexPath) as! VideoCell
-//        if let video = videoList {
-//            cell.video = video[indexPath.item]
-//            cell.profileImageView.layer.cornerRadius = cell.profileImageView.frame.width/2
-//            cell.profileImageView.contentMode = .scaleAspectFill
-//            cell.profileImageView.clipsToBounds = true
-//        }
-//        return cell
-//    }
-//    
-//    
-//    func numberOfSections(in collectionView: UICollectionView) -> Int {
-//        return 1
-//    }
-
-    
-    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        
-//        let height = (view.frame.width-32) * 9/16
-//        return CGSize(width: view.frame.width-32, height: height+70)
-//    }
-//    
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-//        return 0
-//    }
     
     //Helper methods
-    
     func presentVC(text: String) {
         let newVC = SettingsViewController()
         newVC.title = text
         self.navigationController?.pushViewController(newVC, animated: true)
+    }
+    
+    private func setTitleLabel(item: Int) {
+        titlelabel.text = titles[item]
+    }
+
+}
+
+extension HomeBaseViewController {
+    enum ItemsConfig: Int {
+        case Home = 0
+        case Trending = 1
+        case Subscription = 2
+        case Account = 3
+        
+        static func itemsCount() -> Int {
+            return 4
+        }
     }
 }
 

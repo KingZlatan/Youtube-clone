@@ -10,23 +10,6 @@ import UIKit
 
 class FeedCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
-
-    lazy var collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        cv.translatesAutoresizingMaskIntoConstraints = false
-        cv.backgroundColor = .white
-        cv.dataSource = self
-        cv.delegate = self
-        return cv
-    }()
-    
-    var videoList: [Video]? {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         collectionView.register(UINib(nibName: "CustomCell", bundle: nil), forCellWithReuseIdentifier: "cellID")
@@ -40,8 +23,9 @@ class FeedCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, 
     
     override func setUpViews() {
         super.setUpViews()
-        backgroundColor = UIColor.lightGray
-        
+
+        collectionView.dataSource = self
+        collectionView.delegate = self
         
         addSubview(collectionView)
         addConstraint(NSLayoutConstraint(item: collectionView, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: 0))
@@ -50,8 +34,10 @@ class FeedCell: BaseCell, UICollectionViewDelegate, UICollectionViewDataSource, 
         addConstraint(NSLayoutConstraint(item: collectionView, attribute: .trailing, relatedBy: .equal, toItem: self, attribute: .trailing, multiplier: 1, constant: 0))
 
         collectionView.register(VideoCell.self, forCellWithReuseIdentifier: "cellID")
+        
     }
     
+
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1

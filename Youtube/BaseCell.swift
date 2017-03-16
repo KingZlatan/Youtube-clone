@@ -10,6 +10,9 @@ import UIKit
 
 
 class BaseCell: UICollectionViewCell {
+    
+    var videoList: [Video]?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -24,5 +27,35 @@ class BaseCell: UICollectionViewCell {
     
     func setUpViews() {
         
+        readContentsOfFile()
     }
+    
+    lazy var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        cv.translatesAutoresizingMaskIntoConstraints = false
+        cv.backgroundColor = .white
+        return cv
+    }()
+    
+    func readContentsOfFile() {
+        let file = Bundle.main.path(forResource: "home", ofType: "json")
+        
+        do {
+            let jsonData = try Data(contentsOf: URL(fileURLWithPath: file!), options: .alwaysMapped)
+            let data = try JSONSerialization.jsonObject(with: jsonData, options: .mutableLeaves)
+            if let json = data as? [[String: Any]] {
+                
+                var videos = [Video]()
+                for obj in json {
+                    let parsed = Video(json: obj)
+                    videos.append(parsed)
+                }
+                videoList = videos
+            }
+        } catch {
+            print(error)
+        }
+    }
+
 }
